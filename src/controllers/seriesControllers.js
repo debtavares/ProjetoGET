@@ -14,16 +14,22 @@ const getAll = (req, res) => {
 
 const getTitle = (req, res) => {
 
-    const requestTitle = req.query.title.toLowerCase()
+    const requestTitle = req.params.title.toLowerCase()
 
-    const filterTitle = series.find(series => series.title.toLowerCase().includes(requestedTitle))
+    const filterTitle = series.find(series => series.title.toLowerCase() == requestTitle)
 
-        if (requestTitle === "" || filterTitle === undefined) {
-            res.status(404).send({ "message" : "insira um título válido"})
-        } else {
-            res.status(200).send(filterTitle)
-        }
+    res.status(200).send(filterTitle)
+
 
 }
 
-module.exports = { home, getAll, getTitle }
+const getId = (req, res) => {
+
+    const requestId = req.params.id.toLowerCase()
+
+    const filterId = series.find(series => series.id.toLower == requestId)
+
+    res.status(200).send(filterId)
+}
+
+module.exports = { home, getAll, getTitle, getId }
