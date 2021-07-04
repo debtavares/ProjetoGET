@@ -25,9 +25,9 @@ const getTitle = (req, res) => {
 
 const getId = (req, res) => {
 
-    const requestId = req.params.id.toLowerCase()
+    const requestId = req.params.id
 
-    const filterId = series.find(series => series.id.toLower == requestId)
+    const filterId = series.find(series => series.id == requestId)
 
     res.status(200).send(filterId)
 }
